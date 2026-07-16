@@ -70,11 +70,11 @@ that uses Koras.AI. Maintainers: run the second before every release.
 
 ### Release mechanics
 
-- [ ] Publish happens **only** via the tag-triggered `release.yml` in the protected `nuget`
+- [ ] Publish happens **only** via the tag-triggered `release.yml` in the protected `nuget-release`
       environment — no manual `dotnet nuget push`
       ([nuget-publishing.md](../release/nuget-publishing.md)).
 - [ ] NuGet Trusted Publishing policy (owner `kora.kanchan`) still pins exactly this
-      repository, `release.yml`, and the `nuget` environment; no long-lived NuGet API
+      repository, `release.yml`, and the `nuget-release` environment; no long-lived NuGet API
       keys exist for these packages.
 - [ ] Packed artifacts spot-checked: no unexpected files, snupkg present, SourceLink resolves.
 

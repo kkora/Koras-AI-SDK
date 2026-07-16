@@ -20,7 +20,7 @@ jobs:
     # Publishing uses NuGet Trusted Publishing (OIDC) — no stored API key; the
     # trusted publishing policy on nuget.org pins this repo, workflow, and environment.
     # See docs/release/nuget-publishing.md.
-    environment: nuget
+    environment: nuget-release
     steps:
       - uses: actions/checkout@v7
         with:

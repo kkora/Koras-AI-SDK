@@ -2,7 +2,7 @@
 
 Packages are published to NuGet.org **only** by the tag-triggered
 [`release.yml`](../../.github/workflows/release.yml) workflow running in the protected
-`nuget` GitHub environment. Manual `dotnet nuget push` is never used.
+`nuget-release` GitHub environment. Manual `dotnet nuget push` is never used.
 
 ## Trusted Publishing (no stored API key)
 
@@ -31,7 +31,7 @@ The trusted publishing policy lives under the `kora.kanchan` nuget.org profile �
 | Repository owner | `kkora` |
 | Repository | `Koras-AI-SDK` |
 | Workflow file | `release.yml` (file name only) |
-| Environment | `nuget` |
+| Environment | `nuget-release` |
 
 New policies may start as *temporarily active* for 7 days until the first successful
 publish permanently binds them to the repository's GitHub IDs; re-arm the window from the
@@ -39,6 +39,7 @@ nuget.org UI if it lapses before the first release.
 
 ## GitHub environment
 
-The `nuget` environment exists for approval gating: configure required reviewers in the
-repository settings (Settings → Environments → `nuget`) so a tag push cannot publish
+The `nuget-release` environment exists for approval gating: configure required reviewers
+in the repository settings (Settings → Environments → `nuget-release`) so a tag push
+cannot publish
 without sign-off. The environment holds no secrets.

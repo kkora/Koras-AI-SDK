@@ -22,7 +22,8 @@ from a version tag — never publish manually (see
    [`release.yml`](../../.github/workflows/release.yml), which restores, builds, tests,
    packs with the tag-derived version, publishes all packages to NuGet.org via Trusted
    Publishing, and creates the GitHub release with generated notes. The job runs in the
-   protected `nuget` environment, so it waits for any configured required reviewers.
+   protected `nuget-release` environment, so it waits for any configured required
+   reviewers.
 6. **After release** — run the "After release" section of the
    [security checklist](../security/security-checklist.md); verify the packages render
    correctly on NuGet.org.

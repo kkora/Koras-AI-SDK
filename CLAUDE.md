@@ -89,7 +89,7 @@ review; no placeholder code.
 ## 14. Release workflow
 
 See `docs/release/release-process.md`: version bump in `Directory.Build.props` → tag `vX.Y.Z`
-→ `release.yml` packs, validates, publishes to NuGet.org from the protected `nuget`
+→ `release.yml` packs, validates, publishes to NuGet.org from the protected `nuget-release`
 environment. Never publish manually.
 
 ## 15. Definition of done
