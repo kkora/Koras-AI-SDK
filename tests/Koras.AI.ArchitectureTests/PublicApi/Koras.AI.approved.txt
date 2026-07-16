@@ -1,0 +1,100 @@
+static class Koras.AI.ChatClientExtensions
+  Method: System.Threading.Tasks.Task`1[Koras.AI.ChatResponse] CompleteAsync(Koras.AI.IChatClient, System.String, System.Threading.CancellationToken)
+  Method: System.Threading.Tasks.Task`1[Koras.AI.ChatResponse`1[T]] CompleteAsync[T](Koras.AI.IChatClient, Koras.AI.ChatRequest, System.Text.Json.JsonSerializerOptions, System.Threading.CancellationToken)
+  Method: System.Threading.Tasks.Task`1[Koras.AI.ChatResponse`1[T]] CompleteAsync[T](Koras.AI.IChatClient, System.String, System.Threading.CancellationToken)
+sealed class Koras.AI.ChatResponse`1
+  Property: Koras.AI.ChatResponse Raw
+  Property: T Value
+  Constructor: Void .ctor()
+abstract class Koras.AI.DelegatingChatClient
+  Method: System.Collections.Generic.IAsyncEnumerable`1[Koras.AI.ChatStreamUpdate] StreamAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Method: System.Object GetService(System.Type)
+  Property: System.String ProviderName
+  Method: System.Threading.Tasks.Task`1[Koras.AI.ChatResponse] CompleteAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+sealed class Koras.AI.FallbackChatClient
+  Method: System.Collections.Generic.IAsyncEnumerable`1[Koras.AI.ChatStreamUpdate] StreamAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Property: System.String ProviderName
+  Method: System.Threading.Tasks.Task`1[Koras.AI.ChatResponse] CompleteAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Constructor: Void .ctor(System.Collections.Generic.IReadOnlyList`1[Koras.AI.IChatClient], System.Func`2[Koras.AI.AiException,System.Boolean], Microsoft.Extensions.Logging.ILogger`1[Koras.AI.FallbackChatClient])
+interface Koras.AI.IChatClientFactory
+  Method: Koras.AI.IChatClient GetChatClient(System.String)
+  Method: Koras.AI.IEmbeddingClient GetEmbeddingClient(System.String)
+  Property: System.Collections.Generic.IReadOnlyList`1[System.String] ClientNames
+sealed class Koras.AI.KorasAiBuilder
+  Method: Koras.AI.KorasAiBuilder ConfigureTelemetry(System.Action`1[Koras.AI.KorasAiTelemetryOptions])
+  Method: Koras.AI.KorasAiBuilder Use(System.Func`3[System.IServiceProvider,Koras.AI.IChatClient,Koras.AI.IChatClient])
+  Method: Koras.AI.KorasAiBuilder UseRetry(System.Action`1[Koras.AI.RetryOptions])
+  Method: Koras.AI.KorasAiBuilder UseToolInvocation(System.Action`1[Koras.AI.ToolInvocationOptions])
+  Method: Koras.AI.KorasAiClientBuilder AddClient(System.String, System.Func`2[System.IServiceProvider,Koras.AI.IChatClient])
+  Method: Koras.AI.KorasAiClientBuilder AddEmbeddingClient(System.String, System.Func`2[System.IServiceProvider,Koras.AI.IEmbeddingClient])
+  Method: Koras.AI.KorasAiClientBuilder AddFallback(System.String, System.String[])
+  Property: Microsoft.Extensions.DependencyInjection.IServiceCollection Services
+sealed class Koras.AI.KorasAiClientBuilder
+  Property: Koras.AI.KorasAiBuilder Builder
+  Method: Koras.AI.KorasAiClientBuilder AsDefault()
+  Method: Koras.AI.KorasAiClientBuilder Use(System.Func`3[System.IServiceProvider,Koras.AI.IChatClient,Koras.AI.IChatClient])
+  Property: System.String Name
+static class Koras.AI.KorasAiTelemetry
+  Field: System.String ActivitySourceName
+  Field: System.String MeterName
+sealed class Koras.AI.KorasAiTelemetryOptions
+  Property: Boolean EnableSensitiveData
+  Constructor: Void .ctor()
+static class Koras.AI.Providers.JsonLinesReader
+  Method: System.Collections.Generic.IAsyncEnumerable`1[System.String] ReadLinesAsync(System.IO.Stream, System.Threading.CancellationToken)
+abstract class Koras.AI.Providers.ProviderChatClient
+  Method: System.Collections.Generic.IAsyncEnumerable`1[Koras.AI.ChatStreamUpdate] StreamAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Property: System.String ProviderName
+  Method: System.Threading.Tasks.Task`1[Koras.AI.ChatResponse] CompleteAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+abstract class Koras.AI.Providers.ProviderEmbeddingClient
+  Property: System.String ProviderName
+  Method: System.Threading.Tasks.Task`1[Koras.AI.EmbeddingResponse] GenerateAsync(Koras.AI.EmbeddingRequest, System.Threading.CancellationToken)
+static class Koras.AI.Providers.ProviderErrors
+  Method: Koras.AI.AiErrorCode MapStatusCode(Int32)
+  Method: Koras.AI.AiException FromHttpResponse(System.String, Int32, System.String, System.Nullable`1[System.TimeSpan], System.String, System.String)
+  Method: Koras.AI.AiException InvalidResponse(System.String, System.String, System.Exception)
+  Method: Koras.AI.AiException Network(System.String, System.Exception, System.String)
+  Method: Koras.AI.AiException NotSupported(System.String, System.String)
+  Method: System.Nullable`1[System.TimeSpan] ParseRetryAfter(System.Net.Http.Headers.HttpResponseHeaders, System.TimeProvider)
+  Method: System.String Truncate(System.String)
+struct Koras.AI.Providers.SseEvent
+  Method: Boolean Equals(Koras.AI.Providers.SseEvent)
+  Method: Boolean Equals(System.Object)
+  Method: Int32 GetHashCode()
+  Property: System.String Data
+  Property: System.String EventType
+  Method: System.String ToString()
+  Constructor: Void .ctor(System.String, System.String)
+  Method: Void Deconstruct(System.String ByRef, System.String ByRef)
+static class Koras.AI.Providers.SseReader
+  Method: System.Collections.Generic.IAsyncEnumerable`1[Koras.AI.Providers.SseEvent] ReadEventsAsync(System.IO.Stream, System.Threading.CancellationToken)
+sealed class Koras.AI.RetryChatClient : Koras.AI.DelegatingChatClient
+  Method: System.Collections.Generic.IAsyncEnumerable`1[Koras.AI.ChatStreamUpdate] StreamAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Method: System.Threading.Tasks.Task`1[Koras.AI.ChatResponse] CompleteAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Constructor: Void .ctor(Koras.AI.IChatClient, Koras.AI.RetryOptions, System.TimeProvider, Microsoft.Extensions.Logging.ILogger`1[Koras.AI.RetryChatClient])
+sealed class Koras.AI.RetryOptions
+  Property: Boolean HonorRetryAfter
+  Property: Int32 MaxAttempts
+  Property: System.TimeSpan AttemptTimeout
+  Property: System.TimeSpan BaseDelay
+  Property: System.TimeSpan MaxDelay
+  Constructor: Void .ctor()
+sealed class Koras.AI.Templates.PromptTemplate
+  Method: Koras.AI.Templates.PromptTemplate Parse(System.String)
+  Property: System.Collections.Generic.IReadOnlyList`1[System.String] ParameterNames
+  Method: System.String Render(System.Collections.Generic.IReadOnlyDictionary`2[System.String,System.Object])
+  Method: System.String Render(System.Object)
+  Property: System.String Source
+enum Koras.AI.ToolErrorBehavior
+  Field: Int32 value__
+  Field: Koras.AI.ToolErrorBehavior ReturnToModel
+  Field: Koras.AI.ToolErrorBehavior Throw
+sealed class Koras.AI.ToolInvocationOptions
+  Property: Int32 MaxIterations
+  Property: Koras.AI.ToolErrorBehavior ErrorBehavior
+  Constructor: Void .ctor()
+sealed class Koras.AI.ToolInvokingChatClient : Koras.AI.DelegatingChatClient
+  Method: System.Threading.Tasks.Task`1[Koras.AI.ChatResponse] CompleteAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Constructor: Void .ctor(Koras.AI.IChatClient, Koras.AI.ToolInvocationOptions)
+static class Microsoft.Extensions.DependencyInjection.KorasAiServiceCollectionExtensions
+  Method: Microsoft.Extensions.DependencyInjection.IServiceCollection AddKorasAI(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Action`1[Koras.AI.KorasAiBuilder])

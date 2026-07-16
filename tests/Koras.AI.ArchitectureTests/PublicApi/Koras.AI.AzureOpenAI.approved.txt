@@ -1,0 +1,16 @@
+sealed class Koras.AI.AzureOpenAI.AzureOpenAIChatClient : Koras.AI.OpenAI.OpenAIChatClient
+  Constructor: Void .ctor(System.Net.Http.HttpClient, Koras.AI.AzureOpenAI.AzureOpenAIOptions)
+sealed class Koras.AI.AzureOpenAI.AzureOpenAIEmbeddingClient : Koras.AI.OpenAI.OpenAIEmbeddingClient
+  Constructor: Void .ctor(System.Net.Http.HttpClient, Koras.AI.AzureOpenAI.AzureOpenAIOptions)
+sealed class Koras.AI.AzureOpenAI.AzureOpenAIOptions
+  Property: System.String ApiKey
+  Property: System.String ApiVersion
+  Property: System.String Deployment
+  Property: System.String EmbeddingDeployment
+  Property: System.Uri Endpoint
+  Constructor: Void .ctor()
+static class Koras.AI.AzureOpenAIKorasAiBuilderExtensions
+  Method: Koras.AI.KorasAiClientBuilder AddAzureOpenAI(Koras.AI.KorasAiBuilder, Microsoft.Extensions.Configuration.IConfiguration)
+  Method: Koras.AI.KorasAiClientBuilder AddAzureOpenAI(Koras.AI.KorasAiBuilder, System.Action`1[Koras.AI.AzureOpenAI.AzureOpenAIOptions])
+  Method: Koras.AI.KorasAiClientBuilder AddAzureOpenAI(Koras.AI.KorasAiBuilder, System.String, System.Action`1[Koras.AI.AzureOpenAI.AzureOpenAIOptions])
+  Field: System.String DefaultClientName

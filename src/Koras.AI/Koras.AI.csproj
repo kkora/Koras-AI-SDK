@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Koras.AI</RootNamespace>
+    <Description>The Koras AI SDK core: dependency injection builder, named clients, retry and provider fallback, structured output, tool-invocation loop, prompt templates, logging and OpenTelemetry-convention telemetry, plus reusable plumbing for building AI providers. Install alongside one or more Koras.AI.* provider packages.</Description>
+    <PackageTags>ai;llm;genai;chat;streaming;tools;embeddings;resilience;fallback;opentelemetry;dependency-injection;koras</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Koras.AI.Abstractions\Koras.AI.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+  </ItemGroup>
+
+</Project>

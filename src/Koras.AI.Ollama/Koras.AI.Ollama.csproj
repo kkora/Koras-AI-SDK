@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Koras.AI.Ollama</RootNamespace>
+    <Description>Ollama provider for the Koras AI SDK: chat completion, streaming, tool calling, structured output, and embeddings against local or self-hosted Ollama.</Description>
+    <PackageTags>ai;llm;ollama;local;chat;embeddings;koras</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Koras.AI\Koras.AI.csproj" />
+  </ItemGroup>
+
+</Project>

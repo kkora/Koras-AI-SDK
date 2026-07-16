@@ -1,0 +1,17 @@
+sealed class Koras.AI.Anthropic.AnthropicChatClient : Koras.AI.Providers.ProviderChatClient
+  Method: System.Collections.Generic.IAsyncEnumerable`1[Koras.AI.ChatStreamUpdate] StreamAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Method: System.Threading.Tasks.Task ProbeAsync(System.Threading.CancellationToken)
+  Method: System.Threading.Tasks.Task`1[Koras.AI.ChatResponse] CompleteAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Constructor: Void .ctor(System.Net.Http.HttpClient, Koras.AI.Anthropic.AnthropicOptions)
+sealed class Koras.AI.Anthropic.AnthropicOptions
+  Property: Int32 DefaultMaxOutputTokens
+  Property: System.String AnthropicVersion
+  Property: System.String ApiKey
+  Property: System.String DefaultModel
+  Property: System.Uri Endpoint
+  Constructor: Void .ctor()
+static class Koras.AI.AnthropicKorasAiBuilderExtensions
+  Method: Koras.AI.KorasAiClientBuilder AddAnthropic(Koras.AI.KorasAiBuilder, Microsoft.Extensions.Configuration.IConfiguration)
+  Method: Koras.AI.KorasAiClientBuilder AddAnthropic(Koras.AI.KorasAiBuilder, System.Action`1[Koras.AI.Anthropic.AnthropicOptions])
+  Method: Koras.AI.KorasAiClientBuilder AddAnthropic(Koras.AI.KorasAiBuilder, System.String, System.Action`1[Koras.AI.Anthropic.AnthropicOptions])
+  Field: System.String DefaultClientName
