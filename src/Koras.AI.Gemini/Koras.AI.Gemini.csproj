@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Koras.AI.Gemini</RootNamespace>
+    <Description>Google Gemini provider for the Koras AI SDK: chat completion, streaming, tool calling, structured output, and embeddings over the Gemini REST API.</Description>
+    <PackageTags>ai;llm;google;gemini;chat;embeddings;koras</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Koras.AI\Koras.AI.csproj" />
+  </ItemGroup>
+
+</Project>

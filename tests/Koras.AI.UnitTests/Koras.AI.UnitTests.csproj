@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <RootNamespace>Koras.AI.UnitTests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Koras.AI.Abstractions\Koras.AI.Abstractions.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI\Koras.AI.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.OpenAI\Koras.AI.OpenAI.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.AzureOpenAI\Koras.AI.AzureOpenAI.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.Anthropic\Koras.AI.Anthropic.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.Gemini\Koras.AI.Gemini.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.Ollama\Koras.AI.Ollama.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.AspNetCore\Koras.AI.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.OpenTelemetry\Koras.AI.OpenTelemetry.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Fixtures\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

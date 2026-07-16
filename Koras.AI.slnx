@@ -1,0 +1,27 @@
+<Solution>
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/Koras.AI.Benchmarks/Koras.AI.Benchmarks.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/Console.Sample/Console.Sample.csproj" />
+    <Project Path="samples/MinimalApi.Sample/MinimalApi.Sample.csproj" />
+    <Project Path="samples/WebApi.Sample/WebApi.Sample.csproj" />
+    <Project Path="samples/WorkerService.Sample/WorkerService.Sample.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Koras.AI.Abstractions/Koras.AI.Abstractions.csproj" />
+    <Project Path="src/Koras.AI.Anthropic/Koras.AI.Anthropic.csproj" />
+    <Project Path="src/Koras.AI.AspNetCore/Koras.AI.AspNetCore.csproj" />
+    <Project Path="src/Koras.AI.AzureOpenAI/Koras.AI.AzureOpenAI.csproj" />
+    <Project Path="src/Koras.AI.Gemini/Koras.AI.Gemini.csproj" />
+    <Project Path="src/Koras.AI.Ollama/Koras.AI.Ollama.csproj" />
+    <Project Path="src/Koras.AI.OpenAI/Koras.AI.OpenAI.csproj" />
+    <Project Path="src/Koras.AI.OpenTelemetry/Koras.AI.OpenTelemetry.csproj" />
+    <Project Path="src/Koras.AI/Koras.AI.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Koras.AI.ArchitectureTests/Koras.AI.ArchitectureTests.csproj" />
+    <Project Path="tests/Koras.AI.IntegrationTests/Koras.AI.IntegrationTests.csproj" />
+    <Project Path="tests/Koras.AI.UnitTests/Koras.AI.UnitTests.csproj" />
+  </Folder>
+</Solution>

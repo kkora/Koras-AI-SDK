@@ -1,0 +1,34 @@
+name: Feature request
+description: Propose a new capability or API
+labels: [enhancement, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check [ROADMAP.md](../../blob/main/ROADMAP.md) and
+        [docs/features/future-roadmap.md](../../blob/main/docs/features/future-roadmap.md) first —
+        it may already be planned or explicitly out of scope.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What can't you do today? Real scenario preferred over abstract capability.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API or behavior
+      render: csharp
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Affected area
+      options: [Abstractions, Core pipeline, A provider package, ASP.NET Core integration, Telemetry, New package]
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Including why AdditionalProperties / a custom decorator / a custom provider doesn't cover it.

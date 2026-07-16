@@ -1,0 +1,4 @@
+static class OpenTelemetry.Metrics.KorasAiMeterProviderBuilderExtensions
+  Method: OpenTelemetry.Metrics.MeterProviderBuilder AddKorasAI(OpenTelemetry.Metrics.MeterProviderBuilder)
+static class OpenTelemetry.Trace.KorasAiTracerProviderBuilderExtensions
+  Method: OpenTelemetry.Trace.TracerProviderBuilder AddKorasAI(OpenTelemetry.Trace.TracerProviderBuilder)

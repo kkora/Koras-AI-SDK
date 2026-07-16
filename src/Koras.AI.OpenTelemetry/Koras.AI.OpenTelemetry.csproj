@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Koras.AI.OpenTelemetry</RootNamespace>
+    <Description>OpenTelemetry integration for the Koras AI SDK: one-line registration of the Koras.AI ActivitySource and Meter with TracerProviderBuilder and MeterProviderBuilder.</Description>
+    <PackageTags>ai;llm;opentelemetry;tracing;metrics;observability;koras</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Koras.AI\Koras.AI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTelemetry.Api" />
+  </ItemGroup>
+
+</Project>

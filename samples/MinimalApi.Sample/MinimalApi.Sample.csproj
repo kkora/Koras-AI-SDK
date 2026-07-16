@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <UserSecretsId>koras-ai-minimalapi-sample</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Koras.AI.Ollama\Koras.AI.Ollama.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.OpenAI\Koras.AI.OpenAI.csproj" />
+  </ItemGroup>
+
+</Project>

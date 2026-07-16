@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.png binary
+*.ico binary
+*.snupkg binary
+*.nupkg binary
+*.sh text eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf

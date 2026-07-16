@@ -1,0 +1,36 @@
+<Project>
+
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..'))" />
+
+  <PropertyGroup Label="Targets">
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Packaging">
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/korastechnologies/koras-ai-sdk</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>Release notes: https://github.com/korastechnologies/koras-ai-sdk/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <!-- Set to the previous released version once 0.1.0 ships, to gate breaking changes:
+         <PackageValidationBaselineVersion>0.1.0</PackageValidationBaselineVersion> -->
+  </PropertyGroup>
+
+  <ItemGroup Label="Shared internal sources">
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\Guard.cs" Link="Shared\Guard.cs" />
+  </ItemGroup>
+
+  <ItemGroup Label="Package assets">
+    <None Include="$(MSBuildThisFileDirectory)..\assets\icon.png" Pack="true" PackagePath="\" Visible="false" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>
