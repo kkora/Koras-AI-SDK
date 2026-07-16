@@ -24,6 +24,10 @@
          <PackageValidationBaselineVersion>0.1.0</PackageValidationBaselineVersion> -->
   </PropertyGroup>
 
+  <ItemGroup Label="Shared internal sources">
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\Guard.cs" Link="Shared\Guard.cs" />
+  </ItemGroup>
+
   <ItemGroup Label="Package assets">
     <None Include="$(MSBuildThisFileDirectory)..\assets\icon.png" Pack="true" PackagePath="\" Visible="false" />
     <None Include="README.md" Pack="true" PackagePath="\" />

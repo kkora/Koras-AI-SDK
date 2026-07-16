@@ -1,0 +1,18 @@
+sealed class Koras.AI.Ollama.OllamaChatClient : Koras.AI.Providers.ProviderChatClient
+  Method: System.Collections.Generic.IAsyncEnumerable`1[Koras.AI.ChatStreamUpdate] StreamAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Method: System.Threading.Tasks.Task ProbeAsync(System.Threading.CancellationToken)
+  Method: System.Threading.Tasks.Task`1[Koras.AI.ChatResponse] CompleteAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Constructor: Void .ctor(System.Net.Http.HttpClient, Koras.AI.Ollama.OllamaOptions)
+sealed class Koras.AI.Ollama.OllamaEmbeddingClient : Koras.AI.Providers.ProviderEmbeddingClient
+  Method: System.Threading.Tasks.Task`1[Koras.AI.EmbeddingResponse] GenerateAsync(Koras.AI.EmbeddingRequest, System.Threading.CancellationToken)
+  Constructor: Void .ctor(System.Net.Http.HttpClient, Koras.AI.Ollama.OllamaOptions)
+sealed class Koras.AI.Ollama.OllamaOptions
+  Property: System.String DefaultEmbeddingModel
+  Property: System.String DefaultModel
+  Property: System.Uri Endpoint
+  Constructor: Void .ctor()
+static class Koras.AI.OllamaKorasAiBuilderExtensions
+  Method: Koras.AI.KorasAiClientBuilder AddOllama(Koras.AI.KorasAiBuilder, Microsoft.Extensions.Configuration.IConfiguration)
+  Method: Koras.AI.KorasAiClientBuilder AddOllama(Koras.AI.KorasAiBuilder, System.Action`1[Koras.AI.Ollama.OllamaOptions])
+  Method: Koras.AI.KorasAiClientBuilder AddOllama(Koras.AI.KorasAiBuilder, System.String, System.Action`1[Koras.AI.Ollama.OllamaOptions])
+  Field: System.String DefaultClientName

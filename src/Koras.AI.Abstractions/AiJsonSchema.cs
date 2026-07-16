@@ -95,6 +95,7 @@ public static class AiJsonSchema
         var options = new JsonSerializerOptions(JsonSerializerDefaults.Web)
         {
             TypeInfoResolver = new DefaultJsonTypeInfoResolver(),
+            Converters = { new System.Text.Json.Serialization.JsonStringEnumConverter(JsonNamingPolicy.CamelCase) },
         };
         options.MakeReadOnly();
         return options;

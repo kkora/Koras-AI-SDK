@@ -1,0 +1,180 @@
+enum Koras.AI.AiErrorCode
+  Field: Int32 value__
+  Field: Koras.AI.AiErrorCode Authentication
+  Field: Koras.AI.AiErrorCode Canceled
+  Field: Koras.AI.AiErrorCode Configuration
+  Field: Koras.AI.AiErrorCode ContentFiltered
+  Field: Koras.AI.AiErrorCode InvalidRequest
+  Field: Koras.AI.AiErrorCode InvalidResponse
+  Field: Koras.AI.AiErrorCode ModelNotFound
+  Field: Koras.AI.AiErrorCode Network
+  Field: Koras.AI.AiErrorCode NotSupported
+  Field: Koras.AI.AiErrorCode PermissionDenied
+  Field: Koras.AI.AiErrorCode ProviderUnavailable
+  Field: Koras.AI.AiErrorCode RateLimited
+  Field: Koras.AI.AiErrorCode Timeout
+  Field: Koras.AI.AiErrorCode ToolExecutionFailed
+  Field: Koras.AI.AiErrorCode Unknown
+class Koras.AI.AiException : System.Exception
+  Property: Boolean IsTransient
+  Property: Koras.AI.AiErrorCode Code
+  Property: System.Nullable`1[System.Int32] StatusCode
+  Property: System.Nullable`1[System.TimeSpan] RetryAfter
+  Property: System.String Provider
+  Property: System.String ProviderErrorBody
+  Property: System.String RequestId
+  Constructor: Void .ctor(System.String, Koras.AI.AiErrorCode, System.Exception)
+static class Koras.AI.AiJsonSchema
+  Method: System.Text.Json.JsonElement FromMethodParameters(System.Reflection.MethodInfo)
+  Method: System.Text.Json.JsonElement FromType(System.Type)
+  Method: System.Text.Json.JsonElement FromType[T]()
+class Koras.AI.AiTool
+  Property: Boolean CanInvoke
+  Method: Koras.AI.AiTool Create(System.String, System.String, System.Delegate)
+  Method: Koras.AI.AiTool Declare(System.String, System.String, System.Text.Json.JsonElement)
+  Property: System.String Description
+  Property: System.String Name
+  Property: System.Text.Json.JsonElement ParametersSchema
+  Method: System.Threading.Tasks.Task`1[System.String] InvokeAsync(System.String, System.Threading.CancellationToken)
+struct Koras.AI.ChatFinishReason
+  Method: Boolean Equals(Koras.AI.ChatFinishReason)
+  Method: Boolean Equals(System.Object)
+  Method: Int32 GetHashCode()
+  Property: Koras.AI.ChatFinishReason ContentFilter
+  Property: Koras.AI.ChatFinishReason Length
+  Property: Koras.AI.ChatFinishReason Stop
+  Property: Koras.AI.ChatFinishReason ToolCalls
+  Property: Koras.AI.ChatFinishReason Unknown
+  Method: System.String ToString()
+  Property: System.String Value
+  Constructor: Void .ctor(System.String)
+  Method: Void Deconstruct(System.String ByRef)
+sealed class Koras.AI.ChatMessage
+  Method: Koras.AI.ChatMessage Assistant(System.String)
+  Method: Koras.AI.ChatMessage Assistant(System.String, System.Collections.Generic.IReadOnlyList`1[Koras.AI.ToolCall])
+  Method: Koras.AI.ChatMessage System(System.String)
+  Method: Koras.AI.ChatMessage ToolResult(System.String, System.String)
+  Method: Koras.AI.ChatMessage User(System.String)
+  Property: Koras.AI.ChatRole Role
+  Property: System.Collections.Generic.IReadOnlyList`1[Koras.AI.ToolCall] ToolCalls
+  Property: System.String Text
+  Method: System.String ToString()
+  Property: System.String ToolCallId
+  Constructor: Void .ctor(Koras.AI.ChatRole, System.String)
+  Constructor: Void .ctor(Koras.AI.ChatRole, System.String, System.Collections.Generic.IReadOnlyList`1[Koras.AI.ToolCall], System.String)
+sealed class Koras.AI.ChatOptions
+  Property: Koras.AI.ChatResponseFormat ResponseFormat
+  Property: System.Collections.Generic.IReadOnlyDictionary`2[System.String,System.Object] AdditionalProperties
+  Property: System.Collections.Generic.IReadOnlyList`1[Koras.AI.AiTool] Tools
+  Property: System.Collections.Generic.IReadOnlyList`1[System.String] StopSequences
+  Property: System.Nullable`1[Koras.AI.ToolChoice] ToolChoice
+  Property: System.Nullable`1[System.Double] Temperature
+  Property: System.Nullable`1[System.Double] TopP
+  Property: System.Nullable`1[System.Int32] MaxOutputTokens
+  Constructor: Void .ctor()
+sealed class Koras.AI.ChatRequest
+  Property: Koras.AI.ChatOptions Options
+  Method: Koras.AI.ChatRequest FromPrompt(System.String, System.String)
+  Property: System.Collections.Generic.IReadOnlyList`1[Koras.AI.ChatMessage] Messages
+  Property: System.String Model
+  Constructor: Void .ctor()
+sealed class Koras.AI.ChatResponse
+  Property: Koras.AI.ChatFinishReason FinishReason
+  Property: Koras.AI.ChatMessage Message
+  Property: Koras.AI.TokenUsage Usage
+  Property: System.String Model
+  Property: System.String Provider
+  Property: System.String ResponseId
+  Property: System.String Text
+  Property: System.Text.Json.JsonElement RawRepresentation
+  Constructor: Void .ctor()
+abstract class Koras.AI.ChatResponseFormat
+  Method: Koras.AI.ChatResponseFormat ForType[T]()
+  Property: Koras.AI.ChatResponseFormat Json
+  Method: Koras.AI.ChatResponseFormat JsonSchema(System.String, System.Text.Json.JsonElement, Boolean)
+  Property: Koras.AI.ChatResponseFormat Text
+struct Koras.AI.ChatRole
+  Method: Boolean Equals(Koras.AI.ChatRole)
+  Method: Boolean Equals(System.Object)
+  Method: Int32 GetHashCode()
+  Property: Koras.AI.ChatRole Assistant
+  Property: Koras.AI.ChatRole System
+  Property: Koras.AI.ChatRole Tool
+  Property: Koras.AI.ChatRole User
+  Method: System.String ToString()
+  Property: System.String Value
+  Constructor: Void .ctor(System.String)
+  Method: Void Deconstruct(System.String ByRef)
+sealed class Koras.AI.ChatStreamUpdate
+  Property: Koras.AI.ToolCallDelta ToolCallDelta
+  Property: System.Nullable`1[Koras.AI.ChatFinishReason] FinishReason
+  Property: System.Nullable`1[Koras.AI.TokenUsage] Usage
+  Property: System.String ResponseId
+  Property: System.String TextDelta
+  Constructor: Void .ctor()
+sealed class Koras.AI.Embedding
+  Property: Int32 Index
+  Property: System.ReadOnlyMemory`1[System.Single] Vector
+  Constructor: Void .ctor(System.ReadOnlyMemory`1[System.Single], Int32)
+sealed class Koras.AI.EmbeddingRequest
+  Property: System.Collections.Generic.IReadOnlyList`1[System.String] Values
+  Property: System.Nullable`1[System.Int32] Dimensions
+  Property: System.String Model
+  Constructor: Void .ctor()
+  Constructor: Void .ctor(System.String[])
+sealed class Koras.AI.EmbeddingResponse
+  Property: Koras.AI.TokenUsage Usage
+  Property: System.Collections.Generic.IReadOnlyList`1[Koras.AI.Embedding] Embeddings
+  Property: System.String Model
+  Property: System.String Provider
+  Constructor: Void .ctor()
+interface Koras.AI.IChatClient
+  Method: System.Collections.Generic.IAsyncEnumerable`1[Koras.AI.ChatStreamUpdate] StreamAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+  Property: System.String ProviderName
+  Method: System.Threading.Tasks.Task`1[Koras.AI.ChatResponse] CompleteAsync(Koras.AI.ChatRequest, System.Threading.CancellationToken)
+interface Koras.AI.IEmbeddingClient
+  Property: System.String ProviderName
+  Method: System.Threading.Tasks.Task`1[Koras.AI.EmbeddingResponse] GenerateAsync(Koras.AI.EmbeddingRequest, System.Threading.CancellationToken)
+interface Koras.AI.IProviderHealthProbe
+  Method: System.Threading.Tasks.Task ProbeAsync(System.Threading.CancellationToken)
+sealed class Koras.AI.JsonChatResponseFormat : Koras.AI.ChatResponseFormat
+sealed class Koras.AI.JsonSchemaChatResponseFormat : Koras.AI.ChatResponseFormat
+  Property: Boolean Strict
+  Property: System.String Name
+  Property: System.Text.Json.JsonElement Schema
+sealed class Koras.AI.TextChatResponseFormat : Koras.AI.ChatResponseFormat
+struct Koras.AI.TokenUsage
+  Method: Boolean Equals(Koras.AI.TokenUsage)
+  Method: Boolean Equals(System.Object)
+  Method: Int32 GetHashCode()
+  Property: Int32 InputTokens
+  Property: Int32 OutputTokens
+  Property: Int32 TotalTokens
+  Method: System.String ToString()
+  Constructor: Void .ctor(Int32, Int32)
+  Method: Void Deconstruct(Int32 ByRef, Int32 ByRef)
+sealed class Koras.AI.ToolCall
+  Property: System.String ArgumentsJson
+  Property: System.String Id
+  Property: System.String Name
+  Method: T ParseArguments[T]()
+  Constructor: Void .ctor()
+sealed class Koras.AI.ToolCallDelta
+  Property: Int32 Index
+  Property: System.String ArgumentsJsonDelta
+  Property: System.String Id
+  Property: System.String Name
+  Constructor: Void .ctor()
+struct Koras.AI.ToolChoice
+  Method: Boolean Equals(Koras.AI.ToolChoice)
+  Method: Boolean Equals(System.Object)
+  Method: Int32 GetHashCode()
+  Property: Koras.AI.ToolChoice Auto
+  Property: Koras.AI.ToolChoice None
+  Property: Koras.AI.ToolChoice Required
+  Method: Koras.AI.ToolChoice Tool(System.String)
+  Property: System.String RequiredToolName
+  Method: System.String ToString()
+  Property: System.String Value
+  Constructor: Void .ctor(System.String)
+  Method: Void Deconstruct(System.String ByRef)
