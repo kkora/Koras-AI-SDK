@@ -21,4 +21,27 @@ public abstract class DelegatingChatClient(IChatClient innerClient) : IChatClien
     /// <inheritdoc />
     public virtual IAsyncEnumerable<ChatStreamUpdate> StreamAsync(ChatRequest request, CancellationToken cancellationToken = default)
         => InnerClient.StreamAsync(request, cancellationToken);
+
+    /// <summary>
+    /// Walks the decorator chain and returns the first client assignable to
+    /// <paramref name="serviceType"/>, or <see langword="null"/>. Lets integrations discover
+    /// optional capabilities (for example <see cref="IProviderHealthProbe"/>) through any
+    /// decorator stack.
+    /// </summary>
+    /// <param name="serviceType">The capability or client type to find.</param>
+    public virtual object? GetService(Type serviceType)
+    {
+        Guard.NotNull(serviceType);
+        if (serviceType.IsInstanceOfType(this))
+        {
+            return this;
+        }
+
+        if (InnerClient is DelegatingChatClient delegating)
+        {
+            return delegating.GetService(serviceType);
+        }
+
+        return serviceType.IsInstanceOfType(InnerClient) ? InnerClient : null;
+    }
 }

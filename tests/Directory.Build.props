@@ -4,8 +4,9 @@
 
   <PropertyGroup>
     <IsPackable>false</IsPackable>
-    <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <!-- Test code may use sync waits inside test helpers where xunit requires it. -->
+    <!-- Doc file enables IDE0005; CS1591 (missing XML docs) is irrelevant for tests. -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591;CA1849</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

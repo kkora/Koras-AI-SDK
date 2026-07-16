@@ -1,0 +1,2 @@
+static class Microsoft.Extensions.DependencyInjection.KorasAiHealthChecksBuilderExtensions
+  Method: Microsoft.Extensions.DependencyInjection.IHealthChecksBuilder AddKorasAI(Microsoft.Extensions.DependencyInjection.IHealthChecksBuilder, System.String, System.String, Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus, System.Collections.Generic.IEnumerable`1[System.String])

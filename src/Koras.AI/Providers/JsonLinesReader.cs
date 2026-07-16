@@ -18,6 +18,8 @@ public static class JsonLinesReader
 
         while (await reader.ReadLineAsync(cancellationToken).ConfigureAwait(false) is { } line)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             if (!string.IsNullOrWhiteSpace(line))
             {
                 yield return line;

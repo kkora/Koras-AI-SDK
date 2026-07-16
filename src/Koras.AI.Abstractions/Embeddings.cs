@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Koras.AI;
 
 /// <summary>A request to generate embedding vectors for one or more input texts.</summary>
@@ -10,6 +12,7 @@ public sealed class EmbeddingRequest
 
     /// <summary>Initializes a request for the given input values.</summary>
     /// <param name="values">The texts to embed.</param>
+    [SetsRequiredMembers]
     public EmbeddingRequest(params string[] values)
     {
         Values = Guard.NotNull(values);

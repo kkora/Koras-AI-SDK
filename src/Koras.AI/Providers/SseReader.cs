@@ -30,6 +30,10 @@ public static class SseReader
 
         while (await reader.ReadLineAsync(cancellationToken).ConfigureAwait(false) is { } line)
         {
+            // ReadLineAsync completes synchronously on buffered data without observing the
+            // token; check explicitly so cancellation is prompt even for buffered streams.
+            cancellationToken.ThrowIfCancellationRequested();
+
             if (line.Length == 0)
             {
                 if (data is not null)
