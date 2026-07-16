@@ -23,6 +23,9 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+# [Rr]elease/ above targets build output, but also matches the docs folder — keep that.
+!docs/release/
+
 # .NET Core
 project.lock.json
 project.fragment.lock.json
