@@ -47,12 +47,9 @@ public sealed class FakeChatClient : IChatClient
 
 To simulate failures, throw from `CompleteAsync`:
 `throw new AiException("boom", AiErrorCode.RateLimited) { RetryAfter = TimeSpan.FromSeconds(2) }` —
-this is how you test your catch blocks and skip-not-crash policies without a network.
+this is how you test catch blocks and skip-not-crash policies without a network.
 
 ## Asserting on requests
-
-The fake's `Requests` list turns "did my code build the right prompt?" into a normal
-assertion:
 
 ```csharp
 [Fact]
@@ -95,8 +92,6 @@ Return malformed JSON to verify your error path: the call throws `AiException` w
 
 ## Testing streaming consumers
 
-Script updates on the fake and assert what your consumer assembled:
-
 ```csharp
 [Fact]
 public async Task Streaming_consumer_concatenates_deltas()
@@ -124,13 +119,10 @@ public async Task Streaming_consumer_concatenates_deltas()
 For cancellation tests, pass a token you cancel between updates and assert
 `OperationCanceledException`. The repository's richer fake also supports throwing before or
 after the first update — useful for verifying that your code treats pre-stream and
-mid-stream failures differently ([lifecycle](../concepts/lifecycle.md)).
-
-## Overriding DI in integration tests
-
-`AddKorasAI` registers `IChatClient` with `TryAddSingleton`, so an earlier registration
-wins — replace the whole AI layer in a `WebApplicationFactory` without touching provider
-configuration ([advanced DI guide](dependency-injection.md#testing-overrides)).
+mid-stream failures differently ([lifecycle](../concepts/lifecycle.md)). To override DI in
+integration tests, note that `AddKorasAI` registers `IChatClient` with `TryAddSingleton`,
+so an earlier registration wins
+([advanced DI guide](dependency-injection.md#testing-overrides)).
 
 ## Integration testing against Ollama
 
@@ -165,6 +157,6 @@ public sealed class OllamaIntegrationTests
 }
 ```
 
-Guidelines: keep model-dependent assertions loose (models are nondeterministic — assert
-shape, not wording), pin a small model in CI, and skip rather than fail when the server is
-absent so unit-test runs stay green on machines without Ollama.
+Keep model-dependent assertions loose (models are nondeterministic — assert shape, not
+wording), pin a small model in CI, and skip rather than fail when the server is absent so
+test runs stay green on machines without Ollama.
