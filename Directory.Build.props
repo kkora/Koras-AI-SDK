@@ -29,12 +29,12 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Metadata">
-    <Authors>Koras Technologies</Authors>
+    <Authors>Kanchan Kora</Authors>
     <Company>Koras Technologies</Company>
     <Product>Koras AI SDK</Product>
     <Copyright>© Koras Technologies. All rights reserved.</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
-    <RepositoryUrl>https://github.com/korastechnologies/koras-ai-sdk</RepositoryUrl>
+    <RepositoryUrl>https://github.com/kkora/koras-ai-sdk</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
