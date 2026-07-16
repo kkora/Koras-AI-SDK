@@ -23,17 +23,31 @@ public class TelemetryTests
         return (provider.GetRequiredService<IChatClient>(), provider);
     }
 
+    // The Koras.AI ActivitySource is process-global and other test classes run in parallel,
+    // so a listener must capture only spans tagged with this test's client name.
+    private static ActivityListener ListenToClient(string clientName, List<Activity> activities)
+    {
+        var listener = new ActivityListener
+        {
+            ShouldListenTo = source => source.Name == KorasAiTelemetry.ActivitySourceName,
+            Sample = (ref ActivityCreationOptions<ActivityContext> _) => ActivitySamplingResult.AllDataAndRecorded,
+            ActivityStopped = activity =>
+            {
+                if (Equals(activity.GetTagItem("koras.ai.client.name"), clientName))
+                {
+                    activities.Add(activity);
+                }
+            },
+        };
+        ActivitySource.AddActivityListener(listener);
+        return listener;
+    }
+
     [Fact]
     public async Task Chat_operations_emit_gen_ai_activities()
     {
         var activities = new List<Activity>();
-        using var listener = new ActivityListener
-        {
-            ShouldListenTo = source => source.Name == KorasAiTelemetry.ActivitySourceName,
-            Sample = (ref ActivityCreationOptions<ActivityContext> _) => ActivitySamplingResult.AllDataAndRecorded,
-            ActivityStopped = activities.Add,
-        };
-        ActivitySource.AddActivityListener(listener);
+        using ActivityListener listener = ListenToClient("test-client", activities);
 
         (IChatClient client, ServiceProvider provider) = BuildClient();
         using (provider)
@@ -103,16 +117,10 @@ public class TelemetryTests
     public async Task Streaming_span_covers_the_whole_stream_and_captures_final_usage()
     {
         var activities = new List<Activity>();
-        using var listener = new ActivityListener
-        {
-            ShouldListenTo = source => source.Name == KorasAiTelemetry.ActivitySourceName,
-            Sample = (ref ActivityCreationOptions<ActivityContext> _) => ActivitySamplingResult.AllDataAndRecorded,
-            ActivityStopped = activities.Add,
-        };
-        ActivitySource.AddActivityListener(listener);
+        using ActivityListener listener = ListenToClient("telemetry-streaming", activities);
 
         var services = new ServiceCollection();
-        services.AddKorasAI(ai => ai.AddClient("s", _ =>
+        services.AddKorasAI(ai => ai.AddClient("telemetry-streaming", _ =>
         {
             var fake = new FakeChatClient("fakeprov");
             fake.StreamUpdates.Add(new ChatStreamUpdate { TextDelta = "a" });
