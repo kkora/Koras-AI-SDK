@@ -73,7 +73,9 @@ that uses Koras.AI. Maintainers: run the second before every release.
 - [ ] Publish happens **only** via the tag-triggered `release.yml` in the protected `nuget`
       environment — no manual `dotnet nuget push`
       ([nuget-publishing.md](../release/nuget-publishing.md)).
-- [ ] `NUGET_API_KEY` is scoped to `Koras.AI.*` push and within its expiry window.
+- [ ] NuGet Trusted Publishing policy (owner `kora.kanchan`) still pins exactly this
+      repository, `release.yml`, and the `nuget` environment; no long-lived NuGet API
+      keys exist for these packages.
 - [ ] Packed artifacts spot-checked: no unexpected files, snupkg present, SourceLink resolves.
 
 ### After release

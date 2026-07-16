@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write # GitHub OIDC token for NuGet Trusted Publishing
 
 env:
   DOTNET_NOLOGO: true
@@ -15,8 +16,10 @@ env:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # Protected environment: configure required reviewers + the NUGET_API_KEY secret in
-    # repository settings. See docs/release/nuget-publishing.md.
+    # Protected environment: configure required reviewers in repository settings.
+    # Publishing uses NuGet Trusted Publishing (OIDC) — no stored API key; the
+    # trusted publishing policy on nuget.org pins this repo, workflow, and environment.
+    # See docs/release/nuget-publishing.md.
     environment: nuget
     steps:
       - uses: actions/checkout@v7
@@ -52,10 +55,19 @@ jobs:
           --output artifacts/packages
           -p:Version=${{ steps.version.outputs.version }}
 
+      # Exchanges the job's OIDC token for a 1-hour nuget.org API key, so it must
+      # run right before the push. `user` is the nuget.org profile that owns the
+      # trusted publishing policy.
+      - name: NuGet login (OIDC)
+        id: nuget-login
+        uses: NuGet/login@v1
+        with:
+          user: kora.kanchan
+
       - name: Publish to NuGet.org
         run: >
           dotnet nuget push "artifacts/packages/*.nupkg"
-          --api-key "${{ secrets.NUGET_API_KEY }}"
+          --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}"
           --source https://api.nuget.org/v3/index.json
           --skip-duplicate
 
