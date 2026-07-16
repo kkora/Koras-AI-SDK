@@ -5,6 +5,8 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <IsPackable>false</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591;CA1849</NoWarn>
     <!-- Samples reference local projects; docs/getting-started/installation.md explains how
          consumers switch to the released NuGet packages. -->
   </PropertyGroup>
