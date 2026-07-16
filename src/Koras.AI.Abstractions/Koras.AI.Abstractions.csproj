@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Koras.AI</RootNamespace>
+    <Description>Provider-neutral abstractions for the Koras AI SDK: chat completion, streaming, tool calling, structured output, embeddings, and the normalized AI error model. Reference this package from libraries; applications install Koras.AI plus provider packages.</Description>
+    <PackageTags>ai;llm;genai;chat;abstractions;openai;anthropic;gemini;ollama;sdk;koras</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <!-- JsonSchemaExporter and current serializer features; in-box on net9.0+. -->
+    <PackageReference Include="System.Text.Json" />
+  </ItemGroup>
+
+</Project>

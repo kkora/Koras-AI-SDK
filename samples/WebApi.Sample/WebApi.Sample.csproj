@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <UserSecretsId>koras-ai-webapi-sample</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Koras.AI.OpenAI\Koras.AI.OpenAI.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.AzureOpenAI\Koras.AI.AzureOpenAI.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.Anthropic\Koras.AI.Anthropic.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.Ollama\Koras.AI.Ollama.csproj" />
+    <ProjectReference Include="..\..\src\Koras.AI.AspNetCore\Koras.AI.AspNetCore.csproj" />
+  </ItemGroup>
+
+</Project>

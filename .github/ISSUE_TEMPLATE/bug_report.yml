@@ -1,0 +1,42 @@
+name: Bug report
+description: Something in a Koras.AI package doesn't work as documented
+labels: [bug, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. **Never paste API keys or raw Authorization headers.**
+  - type: input
+    id: packages
+    attributes:
+      label: Package(s) and version(s)
+      placeholder: "Koras.AI 0.1.0, Koras.AI.OpenAI 0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: tfm
+    attributes:
+      label: Target framework and OS
+      placeholder: "net9.0, Ubuntu 24.04"
+    validations:
+      required: true
+  - type: input
+    id: provider
+    attributes:
+      label: Provider and model (if provider-related)
+      placeholder: "anthropic / claude-sonnet-4-5"
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: Smallest code snippet that shows the problem.
+      render: csharp
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs. actual behavior
+      description: Include AiException details if any (Code, Provider, StatusCode, RequestId).
+    validations:
+      required: true

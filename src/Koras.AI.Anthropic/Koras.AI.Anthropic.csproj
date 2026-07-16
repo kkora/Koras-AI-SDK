@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Koras.AI.Anthropic</RootNamespace>
+    <Description>Anthropic (Claude) provider for the Koras AI SDK: chat completion, streaming, tool calling, and structured output over the Anthropic Messages API.</Description>
+    <PackageTags>ai;llm;anthropic;claude;chat;koras</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Koras.AI\Koras.AI.csproj" />
+  </ItemGroup>
+
+</Project>

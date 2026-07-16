@@ -1,0 +1,21 @@
+name: Documentation issue
+description: Docs are wrong, unclear, or missing
+labels: [documentation, triage]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page or file
+      placeholder: "docs/features/streaming.md"
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What's wrong or missing?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement (optional)
