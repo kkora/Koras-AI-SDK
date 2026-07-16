@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "documentationRules": {
+      "companyName": "Koras Technologies",
+      "copyrightText": "© Koras Technologies. Licensed under the MIT license.",
+      "xmlHeader": false,
+      "documentInternalElements": false
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "require"
+    },
+    "orderingRules": {
+      "usingDirectivesPlacement": "outsideNamespace",
+      "systemUsingDirectivesFirst": true
+    }
+  },
+  "_comment": "Style enforcement is done via .editorconfig + EnforceCodeStyleInBuild. This settings file configures StyleCop.Analyzers if a contributor enables it; adopting the analyzer repo-wide is tracked in ROADMAP.md."
+}

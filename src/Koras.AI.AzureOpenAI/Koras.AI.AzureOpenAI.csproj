@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Koras.AI.AzureOpenAI</RootNamespace>
+    <Description>Azure OpenAI provider for the Koras AI SDK: chat completion, streaming, tool calling, structured output, and embeddings against Azure OpenAI deployments.</Description>
+    <PackageTags>ai;llm;azure;azure-openai;chat;embeddings;koras</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Koras.AI.OpenAI\Koras.AI.OpenAI.csproj" />
+  </ItemGroup>
+
+</Project>
