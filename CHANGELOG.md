@@ -6,6 +6,10 @@ versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.1.0-preview.1] — 2026-07-16
+
+Initial preview.
+
 ### Added
 
 - `Koras.AI.Abstractions`: `IChatClient`, `IEmbeddingClient`, `IProviderHealthProbe`, chat
@@ -26,6 +30,3 @@ versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 - Samples: Console, Web API, Minimal API, Worker Service.
 - Full documentation tree under `docs/`.
 
-## [0.1.0-preview.1] — unreleased target
-
-Initial preview.
