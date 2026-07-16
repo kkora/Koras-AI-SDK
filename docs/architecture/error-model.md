@@ -63,7 +63,7 @@ public enum AiErrorCode
 | OpenAI 429 `rate_limit_exceeded` | RateLimited (transient) |
 | Anthropic 529 `overloaded_error` | ProviderUnavailable |
 | Anthropic `invalid_request_error` w/ max_tokens | InvalidRequest |
-| Gemini 400 `API key not valid` | Authentication |
+| Gemini 400 `API key not valid` | InvalidRequest (Gemini reports bad keys as HTTP 400; the message carries the detail) |
 | Ollama connect refused | Network (message hints "is Ollama running?") |
 | Any `stop_reason`/`finishReason` = safety | ContentFiltered (on response mapping) |
 
