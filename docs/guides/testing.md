@@ -1,14 +1,12 @@
 # Testing Guide
 
-`IChatClient` is a plain interface with no required base class, so testing consumer code
-needs no SDK-specific machinery: mock it with your favorite library, or write a small fake.
-The SDK's own test suite uses a hand-written fake
-([`tests/Koras.AI.UnitTests/TestInfrastructure/FakeChatClient.cs`](../../tests/Koras.AI.UnitTests/TestInfrastructure/FakeChatClient.cs))
-— the patterns below are distilled from it.
+`IChatClient` is a plain interface, so testing consumer code needs no SDK-specific
+machinery: mock it with your favorite library, or write a small fake. The SDK's own suite
+uses a hand-written fake
+([`tests/Koras.AI.UnitTests/TestInfrastructure/FakeChatClient.cs`](../../tests/Koras.AI.UnitTests/TestInfrastructure/FakeChatClient.cs));
+the patterns below are distilled from it.
 
 ## A minimal fake
-
-Records requests, returns a canned response, streams from a list:
 
 ```csharp
 public sealed class FakeChatClient : IChatClient
