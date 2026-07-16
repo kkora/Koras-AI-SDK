@@ -67,7 +67,7 @@ public async Task Summarizer_sends_system_instruction_and_caps_tokens()
 
 ## Testing structured output
 
-`CompleteAsync<T>` is an extension over `CompleteAsync`, so a fake that returns JSON text
+`CompleteAsync<T>` is an extension over `CompleteAsync`, so a fake returning JSON text
 exercises the full deserialization path, including the schema being applied:
 
 ```csharp
@@ -79,7 +79,7 @@ public async Task Structured_output_deserializes_and_requests_schema()
     ChatResponse<Recipe> result = await fake.CompleteAsync<Recipe>("a recipe");
 
     Assert.Equal("Pancakes", result.Value.Name);
-    Assert.IsType<ChatResponseFormat>(fake.Requests[0].Options?.ResponseFormat, exactMatch: false);
+    Assert.NotNull(fake.Requests[0].Options?.ResponseFormat);   // ForType<T> was applied
 }
 
 public sealed record Recipe(string Name, int Minutes);
@@ -128,29 +128,22 @@ For tests that should exercise a real model — provider mapping, streaming beha
 calling — Ollama gives you a free, local, keyless target:
 
 ```csharp
-public sealed class OllamaIntegrationTests
+[SkippableFact]   // or gate on an environment variable
+public async Task Completes_against_local_ollama()
 {
-    private static IChatClient CreateClient()
-    {
-        var services = new ServiceCollection();
-        services.AddKorasAI(ai => ai.AddOllama(o => o.DefaultModel = "llama3.2"));
-        return services.BuildServiceProvider().GetRequiredService<IChatClient>();
-    }
+    var services = new ServiceCollection();
+    services.AddKorasAI(ai => ai.AddOllama(o => o.DefaultModel = "llama3.2"));
+    IChatClient chat = services.BuildServiceProvider().GetRequiredService<IChatClient>();
 
-    [SkippableFact]   // or gate on an environment variable
-    public async Task Completes_against_local_ollama()
+    try
     {
-        IChatClient chat = CreateClient();
-        try
-        {
-            ChatResponse response = await chat.CompleteAsync("Reply with exactly: pong");
-            Assert.False(string.IsNullOrWhiteSpace(response.Text));
-            Assert.Equal("ollama", response.Provider);
-        }
-        catch (AiException ex) when (ex.Code == AiErrorCode.Network)
-        {
-            Skip.If(true, "Ollama is not running locally.");
-        }
+        ChatResponse response = await chat.CompleteAsync("Reply with exactly: pong");
+        Assert.False(string.IsNullOrWhiteSpace(response.Text));
+        Assert.Equal("ollama", response.Provider);
+    }
+    catch (AiException ex) when (ex.Code == AiErrorCode.Network)
+    {
+        Skip.If(true, "Ollama is not running locally.");
     }
 }
 ```
