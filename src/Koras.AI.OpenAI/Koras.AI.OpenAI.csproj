@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <!-- Azure OpenAI shares the OpenAI wire mapping (ADR-0003). -->
+    <PackageReference Include="Microsoft.Extensions.Http" />
     <InternalsVisibleTo Include="Koras.AI.AzureOpenAI" />
   </ItemGroup>
 
